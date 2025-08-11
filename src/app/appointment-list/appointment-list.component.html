@@ -1,12 +1,51 @@
-<div>
-    <input [(ngModel)]="newAppointmentTitle" placeholder="descrizione appuntamento">
-    <input [(ngModel)]="newAppointmentDate" type="date" placeholder="data apuntamento">
-    <button (click)="addAppointment()">Aggiungi</button>
-</div>
+<div class="min-vh-100 py-5" data-bs-theme="dark">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card bg-body-tertiary border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="card-body p-4 p-md-5">
+                        <h1 class="h4 mb-4">📅 Appuntamenti</h1>
 
-<ul>
-    <li *ngFor="let appointment of appointments index as i">
-        {{appointment.title}} - {{appointment.date | date:'dd.MM.yyyy'}}
-        <button (click)="deleteAppointment(i)">Elimina</button>
-    </li>
-</ul>
+                        <div class="row g-3 align-items-start mb-3">
+                            <div class="col-12 col-lg">
+                                <input [(ngModel)]="newAppointmentTitle" placeholder="Descrizione"
+                                    class="form-control form-control-lg bg-dark-subtle text-light rounded-3 border-0 text-center"
+                                    type="text" />
+                            </div>
+
+                            <div class="col-12 col-lg-auto">
+                                <input [(ngModel)]="newAppointmentDate" type="date" placeholder="Data appuntamento"
+                                    class="form-control form-control-lg bg-dark-subtle text-light rounded-3 border-0" />
+                            </div>
+
+                            <div class="col-12 col-lg-auto">
+                                <button (click)="addAppointment()" class="btn btn-primary btn-lg rounded-3 px-4 w-100"
+                                    type="button">
+                                    Aggiungi
+                                </button>
+                            </div>
+                        </div>
+
+                        <hr class="border-secondary my-4" />
+
+                        <ul class="list-group list-group-flush rounded-4 overflow-hidden">
+                            <li class="list-group-item bg-transparent text-light d-flex align-items-center justify-content-between"
+                                *ngFor="let appointment of appointments; index as i">
+                                <div class="d-flex flex-column">
+                                    <span class="fw-semibold">{{ appointment.title }}</span>
+                                    <small class="text-secondary">{{ appointment.date | date:'dd.MM.yyyy' }}</small>
+                                </div>
+
+                                <button (click)="deleteAppointment(i)" class="btn btn-sm btn-danger rounded-pill px-3"
+                                    type="button">
+                                    Elimina
+                                </button>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
