@@ -39,4 +39,12 @@ export class AppointmentListComponent implements OnInit {
     this.appointments.splice(index, 1);
     localStorage.setItem('appointments', JSON.stringify(this.appointments));
   }
+
+  page = 1;
+  pageSize = 10;
+
+  get paginatedAppointments() {
+    const start = (this.page - 1) * this.pageSize;
+    return this.appointments.slice(start, start + this.pageSize);
+  }
 }
