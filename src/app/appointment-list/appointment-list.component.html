@@ -1,1 +1,12 @@
-<p>appointment-list works!</p>
+<div>
+    <input [(ngModel)]="newAppointmentTitle" placeholder="descrizione appuntamento">
+    <input [(ngModel)]="newAppointmentDate" type="date" placeholder="data apuntamento">
+    <button (click)="addAppointment()">Aggiungi</button>
+</div>
+
+<ul>
+    <li *ngFor="let appointment of appointments index as i">
+        {{appointment.title}} - {{appointment.date | date:'dd.MM.yyyy'}}
+        <button (click)="deleteAppointment(i)">Elimina</button>
+    </li>
+</ul>
